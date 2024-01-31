@@ -1,0 +1,46 @@
+
+<template>
+    <lightning-card title="Contact List" icon-name="standard:contact">
+        <template if:true={contacts.data}>
+            <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+                <thead>
+                    <tr class="slds-line-height_reset">
+                        <th class="" scope="col">
+                            <div class="slds-truncate" title="Name">Name</div>
+                        </th>
+                        <th class="" scope="col">
+                            <div class="slds-truncate" title="Title">Title</div>
+                        </th>
+                        <th class="" scope="col">
+                            <div class="slds-truncate" title="Phone">Phone</div>
+                        </th>
+                        <th class="" scope="col">
+                            <div class="slds-truncate" title="Email">Email</div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <template for:each={contacts.data} for:item="contact">
+                        <tr class="slds-hint-parent" key={contact.Id}>
+                            <td data-label="Name">
+                                <div class="slds-truncate" title={contact.Name}>{contact.Name}</div>
+                            </td>
+                            <td data-label="Title">
+                                <div class="slds-truncate" title={contact.Title}>{contact.Title}</div>
+                            </td>
+                            <td data-label="Phone">
+                                <div class="slds-truncate" title={contact.Phone}>{contact.Phone}</div>
+                            </td>
+                            <td data-label="Email">
+                                <div class="slds-truncate" title={contact.Email}>{contact.Email}</div>
+                            </td>
+                        </tr>
+                    </template>
+                </tbody>
+            </table>
+        </template>
+        <template if:true={contacts.error}>
+            <p>An error occurred while fetching contacts.</p>
+        </template>
+    </lightning-card>
+</template>
