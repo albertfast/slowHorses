@@ -1,0 +1,44 @@
+/* CSS */
+.panel2{
+    background-color: lightblue; /* Renk ekleme */
+    border: 1px solid #ccc; /* Kenarlık ekleme */
+    padding: 10px; /* Dolgu ekleme */
+}
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-100%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(-50%);
+    }
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+        transform: translateY(-50%);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-20%);
+    }
+}
+
+.panel1 {
+    display: none;
+    animation: fadeIn 0.5s ease-in-out;
+    
+}
+
+.hide {
+    animation: fadeOut 0.5s ease-in-out;
+    animation-fill-mode: forwards; /* Animation ends at the last keyframe */
+}
+
+.show {
+    display: block;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
