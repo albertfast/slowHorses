@@ -1,8 +1,28 @@
+trigger ContactTrigger on Contact (after insert, after update){
+  Contact obj= new Contact();
+  String fname;
+  string lname,title,emailtest;
+  id id1;
+  Contact obj2=trigger.new[0];
+  if (obj2.Name!='' || obj2.Name!=null) {
+    system.debug('trigger called');
+    fname=obj2.FirstName;
+    lname=obj2.LastName;
+    title = obj2.Title;
+    emailtest = obj2.email;
+    id1=obj2.id;
+    sendContactToExternalSystem obj1= new sendContactToExternalSystem();
+    obj1.sendcontact(obj2.FirstName,obj2.LastName,obj2.Title,obj2.Email,obj2.id);
+    
+  }
+  
+}
+
 /*
 Contact & Account has a field called IsActive, if contact is marked as inactive, 
 validate corresponding account and if all contacts now under that account are marked as inactive 
 -need to update account and mark it as inactive as well.
-*/
+
 trigger ContactTrigger on Contact (after insert, after update) {
     // Trigger ContactTrigger runs after any update or insert operation on the Contact object.
 
@@ -37,7 +57,7 @@ trigger ContactTrigger on Contact (after insert, after update) {
     }
 }
 
-
+*/
 /*
 trigger ContactTrigger on Contact (after insert, after update, after delete, after undelete, Before update ) {
   if (Trigger.isBefore && trigger.isUpdate) {
